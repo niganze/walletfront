@@ -1,8 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FiHome, FiBarChart2, FiDollarSign, FiTag, FiSettings, FiLogOut } from "react-icons/fi";
 
 function Dashsider() {
+  const navigate = useNavigate();  
+
+  const handleLogout = () => {
+    // endpoint tot handle the exit for eric 
+    navigate("/");  
+  };
+
   return (
     <div className="bg-[#002C43] text-white h-screen w-64 shadow-lg flex flex-col">
       {/* Logo Section */}
@@ -66,6 +73,7 @@ function Dashsider() {
       {/* Logout Section */}
       <div className="mt-auto">
         <button
+          onClick={handleLogout}  // Triggerring  the logout function
           className="flex items-center w-full px-6 py-3 text-sm font-medium text-white hover:bg-[#003F5F] transition"
         >
           <FiLogOut className="mr-3 text-lg" />

@@ -32,6 +32,10 @@ function Login() {
     }
   };
 
+  const handleGoHome = () => {
+    navigate("/");  // Navigate back to the home page
+  };
+
   return (
     <div className="h-screen bg-[#F3F4F6] flex items-center justify-center">
       <div className="bg-white shadow-lg rounded-lg overflow-hidden flex w-full max-w-6xl h-full">
@@ -52,6 +56,14 @@ function Login() {
           <p className="text-sm text-gray-600 mb-6 text-center">
             Sign in to continue managing your Wallet Pro account.
           </p>
+
+          {/* Back to Home Button */}
+          <button
+            onClick={handleGoHome}
+            className="text-sm text-[#0A1F95] hover:underline mb-4 text-center"
+          >
+            Back to Home
+          </button>
 
           {/* Form */}
           <form className="space-y-6" onSubmit={handleLogin}>

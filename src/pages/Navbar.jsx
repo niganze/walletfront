@@ -27,19 +27,19 @@ const Navbar = () => {
             Dashboard
           </Link>
           <Link
-            to="/transactions"
+            to="/"
             className="hover:text-orange-500 transition-all py-2 px-4 rounded-md hover:bg-[#003F5F]"
           >
             Transactions
           </Link>
           <Link
-            to="/budget"
+            to="/"
             className="hover:text-orange-500 transition-all py-2 px-4 rounded-md hover:bg-[#003F5F]"
           >
             Budget
           </Link>
           <Link
-            to="/reports"
+            to="/"
             className="hover:text-orange-500 transition-all py-2 px-4 rounded-md hover:bg-[#003F5F]"
           >
             Reports
@@ -55,7 +55,7 @@ const Navbar = () => {
             Login
           </Link>
           <Link
-            to="/profile"
+            to="/"
             className="hover:text-orange-500 transition-all py-2 px-4 rounded-md hover:bg-[#003F5F]"
           >
             Profile

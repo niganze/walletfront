@@ -1,65 +1,123 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { FaUniversity, FaMobileAlt, FaWallet } from "react-icons/fa";
+import PP from "../assets/payeric.png";
 
-const Home = () => {
+function Home() {
   return (
-    <div className="bg-gray-50">
+    <div className="bg-gray-50 animate-fadeIn">
       {/* Hero Section */}
-      <section className="flex flex-col lg:flex-row items-center justify-between max-w-7xl mx-auto py-16 px-6 lg:px-12">
-        <div className="text-center lg:text-left lg:w-1/2">
-          <h1 className="text-4xl lg:text-6xl font-bold text-[#002C43] leading-snug">
-            A Better Way To Make Payments
-          </h1>
-          <p className="mt-4 text-lg text-gray-600">
-            Simplify your transactions with WalletApp, offering fast and secure payment solutions.
-          </p>
-          <Link
-            to="/signup"
-            className="mt-6 inline-block bg-orange-500 text-white py-3 px-6 rounded-md text-lg font-medium hover:bg-orange-600 transition-all"
-          >
-            Create Free Account
-          </Link>
-        </div>
-        <div className="mt-10 lg:mt-0 lg:w-1/2 flex justify-center">
-          <img
-            src="/path-to-your-image.jpg"
-            alt="Hero Illustration"
-            className="max-w-full h-auto rounded-md shadow-lg"
-          />
+      <section className="bg-[#F8FAFC] py-12">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between px-6">
+          <div className="md:w-1/2">
+            <h1 className="text-4xl md:text-5xl font-bold text-[#002C43] mb-6">
+              A Better Way to Manage{" "}
+              <span className="text-orange-500">Your Finances</span>
+            </h1>
+            <p className="text-lg text-gray-600 mb-6">
+              Keep track of all your transactions, set budgets, and visualize
+              your financial data easily.
+            </p>
+            <button className="bg-orange-500 text-white py-3 px-6 rounded-md shadow-lg hover:bg-orange-600 transition-transform transform hover:scale-105">
+              Get Started
+            </button>
+          </div>
+          <div className="md:w-1/2 p-4 flex justify-center items-center">
+            <img
+              src={PP}
+              alt="Financial management illustration"
+              className="w-full max-h-[400px] rounded-xl shadow-lg transform transition-transform duration-700 hover:scale-105 hover:rotate-1"
+            />
+          </div>
         </div>
       </section>
 
-      {/* Services Section */}
-      <section className="bg-white py-16">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <h2 className="text-3xl font-bold text-center text-[#002C43]">Our Best Services</h2>
-          <p className="text-center text-gray-600 mt-2">
-            Enjoy maximum services with WalletApp's digital solution to grow your business.
-          </p>
+      {/* Features Section */}
+      <section className="py-12 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <h2 className="text-3xl font-bold text-[#002C43] text-center mb-8">
+            Features Designed for Eric
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Bank Accounts */}
+            <div className="bg-gray-100 p-6 rounded-lg shadow-lg text-center transform transition-transform hover:scale-105">
+              <FaUniversity className="text-orange-500 text-4xl mx-auto mb-4 animate-bounce" />
+              <h3 className="text-xl font-semibold text-[#002C43] mb-2">
+                Bank Accounts
+              </h3>
+              <p className="text-gray-600">
+                Track all transactions for your linked bank accounts in one
+                place.
+              </p>
+            </div>
+            {/* Mobile Money */}
+            <div className="bg-gray-100 p-6 rounded-lg shadow-lg text-center transform transition-transform hover:scale-105">
+              <FaMobileAlt className="text-orange-500 text-4xl mx-auto mb-4 animate-bounce delay-200" />
+              <h3 className="text-xl font-semibold text-[#002C43] mb-2">
+                Mobile Money
+              </h3>
+              <p className="text-gray-600">
+                Monitor transactions on your mobile money accounts seamlessly.
+              </p>
+            </div>
+            {/* Cash */}
+            <div className="bg-gray-100 p-6 rounded-lg shadow-lg text-center transform transition-transform hover:scale-105">
+              <FaWallet className="text-orange-500 text-4xl mx-auto mb-4 animate-bounce delay-400" />
+              <h3 className="text-xl font-semibold text-[#002C43] mb-2">
+                Cash
+              </h3>
+              <p className="text-gray-600">
+                Manage cash transactions and ensure you're always on budget.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Service 1 */}
-            <div className="p-6 bg-gray-50 rounded-lg shadow-md">
-              <img src="/path-to-send-money-icon.svg" alt="Send Money" className="h-12 w-12" />
-              <h3 className="text-xl font-semibold text-orange-500 mt-4">Send Money</h3>
-              <p className="text-gray-600 mt-2">
-                Send money to any WalletApp user instantly by following simple instructions.
+      {/* Additional Features */}
+      <section className="py-12 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6">
+          <h2 className="text-3xl font-bold text-[#002C43] text-center mb-8">
+            Why Choose This App?
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Track Transactions */}
+            <div className="bg-white p-6 rounded-lg shadow-lg transform transition-transform hover:scale-105">
+              <h3 className="text-xl font-semibold text-orange-500 mb-2">
+                Track Transactions
+              </h3>
+              <p className="text-gray-600">
+                Record and monitor all incoming and outgoing transactions,
+                categorized by accounts.
               </p>
             </div>
-            {/* Service 2 */}
-            <div className="p-6 bg-gray-50 rounded-lg shadow-md">
-              <img src="/path-to-payment-online-icon.svg" alt="Payment Online" className="h-12 w-12" />
-              <h3 className="text-xl font-semibold text-orange-500 mt-4">Payment Online</h3>
-              <p className="text-gray-600 mt-2">
-                Pay online with WalletApp services, and your receiver will get instant notifications.
+            {/* Generate Reports */}
+            <div className="bg-white p-6 rounded-lg shadow-lg transform transition-transform hover:scale-105">
+              <h3 className="text-xl font-semibold text-orange-500 mb-2">
+                Generate Reports
+              </h3>
+              <p className="text-gray-600">
+                Create financial reports for specific time gaps, making analysis
+                easier.
               </p>
             </div>
-            {/* Service 3 */}
-            <div className="p-6 bg-gray-50 rounded-lg shadow-md">
-              <img src="/path-to-receive-money-icon.svg" alt="Receive Money" className="h-12 w-12" />
-              <h3 className="text-xl font-semibold text-orange-500 mt-4">Receive Money</h3>
-              <p className="text-gray-600 mt-2">
-                Receive money from any WalletApp user instantly once they pay for you.
+            {/* Set Budgets */}
+            <div className="bg-white p-6 rounded-lg shadow-lg transform transition-transform hover:scale-105">
+              <h3 className="text-xl font-semibold text-orange-500 mb-2">
+                Set Budgets
+              </h3>
+              <p className="text-gray-600">
+                Stay within limits by setting budgets and receiving
+                notifications when exceeded.
+              </p>
+            </div>
+            {/* Link Expenses */}
+            <div className="bg-white p-6 rounded-lg shadow-lg transform transition-transform hover:scale-105">
+              <h3 className="text-xl font-semibold text-orange-500 mb-2">
+                Link Expenses
+              </h3>
+              <p className="text-gray-600">
+                Categorize expenses into related categories and subcategories
+                effortlessly.
               </p>
             </div>
           </div>
@@ -67,6 +125,6 @@ const Home = () => {
       </section>
     </div>
   );
-};
+}
 
 export default Home;

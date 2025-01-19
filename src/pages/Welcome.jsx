@@ -5,7 +5,7 @@ function Welcome() {
   return (
     <div>
       <Home/>
-    
+      <Transactions/>
     </div>
   )
 }

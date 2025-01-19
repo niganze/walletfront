@@ -3,6 +3,7 @@ import axios from 'axios';
 import { DataGrid } from '@mui/x-data-grid';
 import { MdOutlineAddCircle } from 'react-icons/md';
 
+
 const columns = [
   { field: "id", headerName: "ID", width: 50 },
   { field: "name", headerName: "Category Name", width: 200 },

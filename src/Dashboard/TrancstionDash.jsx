@@ -16,6 +16,8 @@ function TransactionDash() {
   const [rows, setRows] = useState([]);
   const [categories, setCategories] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState(""); // For search functionality
+  const [filterAccount, setFilterAccount] = useState("all"); // For filtering by account
 
   const [transactionData, setTransactionData] = useState({
     amount: "",
@@ -72,12 +74,37 @@ function TransactionDash() {
     }
   };
 
+  // Filtered rows based on search and filter criteria
+  const filteredRows = rows.filter((row) => {
+    const matchesSearch = row.account.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesFilter = filterAccount === "all" || row.account === filterAccount;
+
+    return matchesSearch && matchesFilter;
+  });
+
   return (
     <div className="p-6 bg-gray-50 min-h-screen">
       {/* Header Section */}
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-lg font-bold text-[#0A1F95]">Transactions</h2>
         <div className="flex items-center space-x-4">
+          <input
+            type="text"
+            placeholder="Search by account..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="border px-4 py-2 rounded-md focus:outline-none"
+          />
+          <select
+            value={filterAccount}
+            onChange={(e) => setFilterAccount(e.target.value)}
+            className="border px-4 py-2 rounded-md focus:outline-none"
+          >
+            <option value="all">All Accounts</option>
+            <option value="bank">Bank</option>
+            <option value="mobile money">Mobile Money</option>
+            <option value="cash">Cash</option>
+          </select>
           <button
             className="bg-orange-500 hover:bg-orange-600 text-sm font-medium text-white px-4 py-2 rounded-md transition"
             onClick={() => setModalOpen(true)}
@@ -90,7 +117,7 @@ function TransactionDash() {
       {/* Data Grid */}
       <div className="bg-white shadow rounded-lg p-4">
         <DataGrid
-          rows={rows}
+          rows={filteredRows}
           columns={columns}
           pageSize={5}
           rowsPerPageOptions={[2, 5, 10, 25]}

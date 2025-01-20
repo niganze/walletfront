@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -18,47 +18,22 @@ const Navbar = () => {
           </Link>
         </div>
 
-        {/* Centered Navigation Links (Desktop) */}
-        <div className="hidden md:flex flex-1 justify-center space-x-6">
-          <Link
-            to="/dashboard"
-            className="hover:text-orange-500 transition-all py-2 px-4 rounded-md hover:bg-[#003F5F]"
-          >
-            Dashboard
-          </Link>
-          <Link
-            to="/"
-            className="hover:text-orange-500 transition-all py-2 px-4 rounded-md hover:bg-[#003F5F]"
-          >
-            Transactions
-          </Link>
-          <Link
-            to="/"
-            className="hover:text-orange-500 transition-all py-2 px-4 rounded-md hover:bg-[#003F5F]"
-          >
-            Budget
-          </Link>
-          <Link
-            to="/"
-            className="hover:text-orange-500 transition-all py-2 px-4 rounded-md hover:bg-[#003F5F]"
-          >
-            Reports
-          </Link>
+        {/* Smooth Scrolling Text */}
+        <div className="flex-1 flex justify-center items-center overflow-hidden">
+          <div className="relative w-full">
+            <p className="text-lg text-orange-500 whitespace-nowrap animate-marquee-smooth">
+              My Wallet Eric 
+            </p>
+          </div>
         </div>
 
-        {/* Profile and Login buttons on the right */}
+        {/* Login Button on the right */}
         <div className="hidden md:flex items-center space-x-4">
           <Link
             to="/login"
-            className="hover:text-orange-500 transition-all py-2 px-4 rounded-md hover:bg-[#003F5F]"
+            className="bg-orange-500 text-white py-2 px-4 rounded-md hover:bg-orange-600 transition-all"
           >
             Login
-          </Link>
-          <Link
-            to="/"
-            className="hover:text-orange-500 transition-all py-2 px-4 rounded-md hover:bg-[#003F5F]"
-          >
-            Profile
           </Link>
         </div>
 
@@ -90,45 +65,13 @@ const Navbar = () => {
       {/* Mobile Menu */}
       {isMenuOpen && (
         <div className="md:hidden bg-[#002C43] text-white space-y-4 py-4 px-6">
-          <Link
-            to="/dashboard"
-            className="block hover:text-orange-500 transition-all py-2 px-4 rounded-md hover:bg-[#003F5F]"
-            onClick={() => setIsMenuOpen(false)} // Close menu on click
-          >
-            Dashboard
-          </Link>
-          <Link
-            to="/transactions"
-            className="block hover:text-orange-500 transition-all py-2 px-4 rounded-md hover:bg-[#003F5F]"
-            onClick={() => setIsMenuOpen(false)} // Close menu on click
-          >
-            Transactions
-          </Link>
-          <Link
-            to="/budget"
-            className="block hover:text-orange-500 transition-all py-2 px-4 rounded-md hover:bg-[#003F5F]"
-            onClick={() => setIsMenuOpen(false)} // Close menu on click
-          >
-            Budget
-          </Link>
-          <Link
-            to="/reports"
-            className="block hover:text-orange-500 transition-all py-2 px-4 rounded-md hover:bg-[#003F5F]"
-            onClick={() => setIsMenuOpen(false)} // Close menu on click
-          >
-            Reports
-          </Link>
-          <Link
-            to="/profile"
-            className="block hover:text-orange-500 transition-all py-2 px-4 rounded-md hover:bg-[#003F5F]"
-            onClick={() => setIsMenuOpen(false)} // Close menu on click
-          >
-            Profile
-          </Link>
+          <div className="text-center text-orange-500 text-lg animate-marquee-smooth">
+            My Wallet Eric 
+          </div>
           <Link
             to="/login"
-            className="block hover:text-orange-500 transition-all py-2 px-4 rounded-md hover:bg-[#003F5F]"
-            onClick={() => setIsMenuOpen(false)} // Close menu on click
+            className="block bg-orange-500 text-white py-2 px-4 rounded-md hover:bg-orange-600 transition-all"
+            onClick={() => setIsMenuOpen(false)}
           >
             Login
           </Link>

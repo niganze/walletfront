@@ -7,15 +7,15 @@ export default {
   theme: {
     extend: {
       animation: {
-        fadeIn: "fadeIn 1s ease-out",
+        "marquee-smooth": "marquee-smooth 15s linear infinite",
       },
       keyframes: {
-        fadeIn: {
-          "0%": { opacity: 0 },
-          "100%": { opacity: 1 },
+        "marquee-smooth": {
+          "0%": { transform: "translateX(100%)" },
+          "100%": { transform: "translateX(-100%)" },
         },
       },
     },
   },
   plugins: [],
-}
+};

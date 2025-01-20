@@ -19,7 +19,7 @@ function Transactions() {
     // Fetch categories
     fetch('https://walletbacked.onrender.com/api/categories')
       .then((response) => response.json())
-      .then((data) => setCategories(data)) // Directly setting categories array
+      .then((data) => setCategories(data)) 
       .catch(() => setError('Failed to load categories.'));
   }, []);
 
@@ -28,7 +28,7 @@ function Transactions() {
       amount: amount,
       account: account,
       category: selectedCategory,
-      user: 'userId', // Replace with actual user ID
+      user: 'userId',
     };
 
     try {

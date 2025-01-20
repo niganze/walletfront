@@ -3,8 +3,7 @@ import axios from 'axios';
 import { DataGrid } from '@mui/x-data-grid';
 import { MdOutlineAddCircle } from 'react-icons/md';
 
-
-const columns = [
+const columns = (handleDeleteCategory) => [
   { field: "id", headerName: "ID", width: 50 },
   { field: "name", headerName: "Category Name", width: 200 },
   { field: "parentCategory", headerName: "Parent Category", width: 200 },
@@ -16,8 +15,8 @@ const columns = [
       return (
         <div className="flex space-x-2">
           <button
-            className="px-4 py-2 bg-red-500 text-white text-sm font-medium rounded hover:bg-red-600 transition"
-            onClick={() => alert("Feature to delete category is under development.")}
+            className="px-4 py-2 bg-orange-500 text-white text-sm font-medium rounded hover:bg-orange-600 transition"
+            onClick={() => handleDeleteCategory(params.row._id)}
           >
             Delete
           </button>
@@ -38,12 +37,13 @@ function Category() {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/categories");
+        const response = await axios.get("https://walletbacked.onrender.com/api/categories");
         if (response.status === 200) {
           const data = response.data.map((category, index) => ({
-            ...category,
             id: index + 1,
-            parentCategory: category.parentCategory ? category.parentCategory : "None",
+            name: category.name,
+            parentCategory: category.parentCategory ? category.parentCategory.name : "None",
+            _id: category._id,
           }));
           setCategories(data);
         }
@@ -62,12 +62,27 @@ function Category() {
 
   const handleSubmitCategory = async () => {
     try {
-      await axios.post("http://localhost:5000/api/categories", categoryData);
+      await axios.post("https://walletbacked.onrender.com/api/categories", categoryData);
       alert("Category added successfully!");
       setModalOpen(false);
       window.location.reload();
     } catch (error) {
       console.error("Error adding category:", error.message);
+    }
+  };
+
+  // Function to handle deleting a category
+  const handleDeleteCategory = async (categoryId) => {
+    try {
+      const response = await axios.delete(`http://localhost:5000/api/categories/${categoryId}`);
+      if (response.status === 200) {
+        alert("Category deleted successfully!");
+        // Refresh the categories after deletion
+        setCategories(categories.filter(category => category._id !== categoryId));
+      }
+    } catch (error) {
+      console.error("Error deleting category:", error.message);
+      alert("Failed to delete category");
     }
   };
 
@@ -89,7 +104,7 @@ function Category() {
       <div className="bg-white shadow rounded-lg p-4">
         <DataGrid
           rows={categories}
-          columns={columns}
+          columns={columns(handleDeleteCategory)} // Pass handleDeleteCategory here
           pageSize={5}
           rowsPerPageOptions={[2, 5, 10, 25]}
           pagination
@@ -147,7 +162,7 @@ function Category() {
               </button>
               <button
                 onClick={handleSubmitCategory}
-                className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 transition"
+                className="bg-orange-500 text-white px-4 py-2 rounded-md hover:bg-orange-600 transition"
               >
                 Add
               </button>
